@@ -1,0 +1,40 @@
+button{
+    background-color: rgb(189, 18, 18);
+    border-radius: 15%;
+    outline: none;
+    padding: 2px 4px;
+    text-align: center;
+}
+
+.main{
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+}
+
+.profile{
+    background-image: url("../images/profile.jpg");
+    background-size: cover;
+}
+
+
+.google{
+    background-image: url("../images/google.png");
+    background-size: cover;
+}
+
+
+.facebook{
+    background-image: url("../images/facebook.png");
+    background-size: cover;
+}
+
+.logo{
+    background-image: url("../images/logo.png");
+    background-size: cover;
+}
+
+.active{
+   
+    color: aqua ;
+    font-weight: bold;
+}
