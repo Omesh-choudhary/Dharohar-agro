@@ -20,7 +20,7 @@ export const AuthProvider =({children})=>{
     }
 
     const userAuthentication =async()=>{
-        const response = await fetch("http://localhost:5000/api/auth/user",{
+        const response = await fetch("https://dharohar-agro-server.onrender.com/api/auth/user",{
             method:"GET",
             headers:{
                 "Authorization":`Bearer ${Token}`
@@ -41,7 +41,7 @@ export const AuthProvider =({children})=>{
     const UserData =async()=>{
       let token = localStorage.getItem("token")
       
-      let response = await fetch ("http://localhost:5000/api/send/userData",{
+      let response = await fetch ("https://dharohar-agro-server.onrender.com/api/send/userData",{
         method:"GET",
         headers:{
           "Authorization":`Bearer ${token}`

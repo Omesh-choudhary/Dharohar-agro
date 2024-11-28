@@ -27,7 +27,7 @@ const Home = () => {
      e.preventDefault()
     let token = localStorage.getItem("token")
    
-     let response = await fetch (`http://localhost:5000/api/create/data`,{
+     let response = await fetch (`https://dharohar-agro-server.onrender.com/api/create/data`,{
 
       method:"post",
       headers:{
