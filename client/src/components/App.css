@@ -6,6 +6,10 @@ button{
     text-align: center;
 }
 
+.background{
+    background-size: cover;
+}
+
 .main{
     background-image: url("../images/background.jpg");
     background-size: cover;
