@@ -4,10 +4,12 @@ import '../components/App.css'
 import { useAuth } from '../store/auth'
 import { toast } from 'react-toastify'
 import useCountdown from '../components/CountDown'
+import HashLoader from "react-spinners/HashLoader";
 
 function Register() {
 
   const navigate = useNavigate()
+  const [loader, setloader] = useState(false)
   const {secondsLeft , start}=useCountdown()
  const buttonref = useRef()
   const [user, setuser] = useState({
@@ -80,6 +82,7 @@ function Register() {
  
   
    try {
+    setloader(true)
     const response = await fetch("https://dharohar-agro-server.onrender.com/api/auth/register",{
       method:"POST",
       statusCode: 200,
@@ -90,21 +93,25 @@ function Register() {
       body:JSON.stringify(user)
      });
      let res_data = await response.json()
+    
      
      
      if(response.ok){
  
       StoreTokenInLs(res_data.token)
       navigate('/')
+      setloader(false)
       toast.success(res_data.message)
 
      }else{
       toast.error(res_data.message)
+      setloader(false)
      }
 
    } catch (error) {
      
     console.log("register",error);
+    setloader(false)
     
    }
    
@@ -115,7 +122,7 @@ function Register() {
     <main className='min-h-full w-full '>
     <div className="registration-div">
       <div className=" main registration-container h-[100vh] w-full absolute top-0 z-30 flex justify-center items-center "  >
-       
+     {loader &&  <div className='absolute z-40 h-[100%] w-full bg-black/60 flex justify-center items-center'> <HashLoader color='blue'/></div>}
         <div className="register-box bg-white/15 border-white border-2 rounded-xl backdrop-blur-sm pb-2 min-h-[30vh] mobile:w-[35vw] w-[80%] absolute z-10  flex flex-col items-center ">
         <h1 className='text-3xl text-center text-white mb-6'>Registration</h1>
         <div className=" flex gap-2 text-center mobile:w-[50%] w-[70%] rounded-full px-4 py-2 font-semibold bg-white my-4">

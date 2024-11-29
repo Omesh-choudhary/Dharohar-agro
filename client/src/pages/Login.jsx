@@ -3,10 +3,11 @@ import { NavLink,useNavigate } from 'react-router-dom'
 import { useAuth } from '../store/auth'
 import '../components/App.css'
 import { toast } from 'react-toastify'
+import HashLoader from "react-spinners/HashLoader";
 function Login() {
 
   const navigate = useNavigate()
-
+  const [loader, setloader] = useState(false)
   const [user, setuser] = useState({
     email:"",
     password:""
@@ -29,6 +30,7 @@ function Login() {
  
   
   try {
+    setloader(true)
     const response = await fetch(`https://dharohar-agro-server.onrender.com/api/auth/login`,{
 
       method:"POST",
@@ -46,17 +48,18 @@ function Login() {
      if(response.ok){
       setuser({ email:"", password:""});
       StoreTokenInLs(res_data.token);
-     
+     setloader(false)
       navigate("/")
    
      toast.success(res_data.message)
      
      }
      else{
+      setloader(false)
       toast.error(res_data.message)
      }
    } catch (error) {
-     
+    setloader(false)
     console.log("register",error);
     
    }
@@ -68,7 +71,7 @@ function Login() {
     <main className='h-screen w-[100vw] absolute top-0  '>
  <div className="registration-div">
       <div className=" main registration-container h-[100vh] w-full absolute top-0 z-30 flex justify-center items-center "  >
-       
+      {loader &&  <div className='absolute z-40 h-[100%] w-full bg-black/60 flex justify-center items-center'> <HashLoader color='blue'/></div>}
         <div className="register-box bg-white/15 border-white border-2 rounded-xl backdrop-blur-sm pb-2 min-h-[30vh] w-[80vw] mobile:w-[35vw] absolute z-10  flex flex-col items-center ">
         <h1 className='text-3xl text-center text-white mb-6'>Login</h1>
         <div className=" flex gap-2 text-center mobile:w-[60%] w-[80%] rounded-full px-4 py-2 font-semibold bg-white my-4">
