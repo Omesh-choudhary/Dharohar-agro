@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <header>
 
-        <nav className='w-screen h-12 bg-blue-400/50  z-30  relative top-0'>
+        <nav className='w-screen h-12 bg-white/20  z-30  relative top-0'>
         <div className="navbar w-[100vw] mx-auto h-full flex justify-evenly mobile:justify-between items-center">
         <div className="logo h-[6vh] w-[6vh] my-auto ">
                 
