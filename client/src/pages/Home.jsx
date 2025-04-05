@@ -4,9 +4,10 @@ import { useAuth } from '../store/auth'
 import '../components/App.css'
 import { toast } from 'react-toastify'
 import video from "./video/background.mp4"
+
 const Home = () => {
 
-
+ 
   const [data, setdata] = useState({
     Date:"",
     Product:"",
@@ -55,7 +56,7 @@ const Home = () => {
      const {userAuthentication}=useAuth()
      useEffect(()=>{
       userAuthentication()
-    })
+    },[])
    
      
      
@@ -77,7 +78,7 @@ const Home = () => {
     <video className='h-full w-full object-cover absolute z-0' autoPlay muted loop>
       <source src={video} type='video/mp4' />
     </video>
-
+    
     <div className="form  min-h-[54vh] mobile:w-[50vw] w-[80%] pb-2 tablet:w-[70%] laptop:w-[40%] bg-white/15 backdrop-blur-sm  border-white border-2 rounded-xl">
       <h1 className='text-center text-5xl text-white pb-4 font-sans'>DHAROHAR AGRO</h1>
       <form className='h-full flex flex-col items-center justify-center gap-4' onSubmit={handleSubmit} >
